@@ -8,15 +8,18 @@ public class ProcesadorTexto implements ProcesarNuevoTexto, ProcesarCorreccion{
 
 
 	private List<String> texto = new ArrayList<>();
-	
+
+	@Override
 	public void nueva (String palabra) {
 		texto.add(palabra);
 	}
-	
+
+	@Override
 	public String texto () {
 		return texto.stream().collect(Collectors.joining(" "));
 	}
-	
+
+	@Override
 	public boolean correcto (Idioma idioma) {
 		for (String palabra: texto) {
 			if (! idioma.diccionario.contains(palabra.toLowerCase())) {
